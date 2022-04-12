@@ -18,9 +18,6 @@ class _OpeningPageState extends State<OpeningPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // SizedBox(
-            //   height: 140.0,
-            // ),
             const Text(
               'Login',
               style: TextStyle(
