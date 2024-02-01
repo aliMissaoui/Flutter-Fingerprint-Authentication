@@ -69,11 +69,24 @@ class _OpeningPageState extends State<OpeningPage> {
             const SizedBox(
               height: 40.0,
             ),
+            GestureDetector(
+              onTap: () async {
+                final isAuthenticated = await LocalAuth.authenticate();
 
-            const Icon(
-              Icons.fingerprint_sharp,
-              color: Colors.black,
-              size: 84.0,
+                if (isAuthenticated) {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (BuildContext context) {
+                    return const HomePage();
+                  }));
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Logged in successfully!')));
+                }
+              },
+              child: const Icon(
+                Icons.fingerprint_sharp,
+                color: Colors.black,
+                size: 84.0,
+              ),
             ),
             const SizedBox(
               height: 20.0,
@@ -108,7 +121,10 @@ class _OpeningPageState extends State<OpeningPage> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.black,
         onPressed: () {},
-        child: const Icon(Icons.question_answer_outlined),
+        child: const Icon(
+          Icons.question_answer_outlined,
+          color: Colors.white,
+        ),
       ),
     );
   }
